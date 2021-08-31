@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
 import styles from './LoginView.module.css';
+import Button from '@material-ui/core/Button';
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import { TextField } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 export default function LoginView() {
     const dispatch = useDispatch();
@@ -27,31 +31,39 @@ export default function LoginView() {
     };
 
     return (
-        <div>
-            <h2>Login Page</h2>
+        <div className={styles.container}>
+            <Typography variant="h2">
+                Login
+            </Typography>
 
-            <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-                <label style={styles.label}>
-                    Email
-                    <input
-                        type="email"
-                        name="email"
-                        value={email}
-                        onChange={handleChange}
-                    />
-                </label>
-                
-                <label style={styles.label}>
-                    Password
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={handleChange}
-                    />
-                </label>
-                
-                <button type="submit">Login</button>
+            <form onSubmit={handleSubmit} className={styles.form} autoComplete="off">
+                <TextField
+                    label="Email"
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={handleChange}
+                    placeholder="email@mail.com"
+                    className={styles.input}
+                />
+                <TextField
+                    label="Password"
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={handleChange}
+                    className={styles.input}
+                />
+
+                <Button
+                    type="submit"
+                    startIcon={<PermIdentityIcon />}
+                    variant="contained"
+                    color="secondary"
+                    className={styles.btn}
+                >
+                    Login
+                </Button>
             </form>
         </div>
     );
