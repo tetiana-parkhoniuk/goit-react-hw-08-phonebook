@@ -1,13 +1,15 @@
 import { useEffect, Suspense, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "react-router-dom";
-import AppBar from "components/AppBar";
-import Container from "components/Container";
-import { authOperations, authSelectors } from "redux/auth";
-import PrivateRoute from "components/PrivateRoute";
-import PublicRoute from "components/PublicRoute";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
+import AppBar from "components/AppBar";
+import Container from "components/Container";
+import PrivateRoute from "components/PrivateRoute";
+import PublicRoute from "components/PublicRoute";
+import Loader from "components/Loader";
+import { authOperations, authSelectors } from "redux/auth";
+
 
 
 const HomeView = lazy(() => import('./views/HomeView/HomeView'  /* webpackChunkName: "home-view" */));
@@ -30,7 +32,7 @@ export default function App() {
         <ToastContainer autoClose={3000}  position='top-right'/>
         
         <Switch>
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<Loader />}>
 
             <PublicRoute exact path="/">
               <HomeView />
