@@ -8,11 +8,10 @@ import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 import Loader from 'components/Loader';
 import { authOperations, authSelectors } from 'redux/auth';
-import styles from './App.module.css';
-
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import '@fontsource/roboto';
 import { Container } from '@material-ui/core';
+import styles from './App.module.css';
 
 const HomeView = lazy(() =>
   import('./views/HomeView/HomeView' /* webpackChunkName: "home-view" */),

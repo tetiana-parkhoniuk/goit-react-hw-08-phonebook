@@ -6,10 +6,10 @@ export default function Loader() {
     <div className={styles.loader}>
       <Spinner
         type="Circles"
-        color="#bf2458"
+        color="#ffcf33"
         height={100}
         width={100}
-        timeout={3000}
+        timeout={2000}
       />
     </div>
   );

@@ -3,7 +3,7 @@ import styles from 'components/Filter/Filter.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsSelectors } from '../../redux/contacts';
 import { changeFilter } from '../../redux/contacts/contacts-slice';
-
+import { TextField } from '@material-ui/core';
 
 export default function Filter() {
   const id = uuidv4();
@@ -14,15 +14,14 @@ export default function Filter() {
 
   return (
     <div className={styles.filterContainer}>
-      <label className={styles.label} htmlFor={id}>
-        Find contacts by name
-      </label>
-      <input
+      <TextField
+        variant="outlined"
         type="text"
+        label="Find contacts by name"
         id={id}
         value={value}
-        className={styles.input}
         onChange={onChange}
+        className={styles.input}
       />
     </div>
   );

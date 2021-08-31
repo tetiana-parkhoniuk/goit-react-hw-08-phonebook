@@ -4,6 +4,9 @@ import { toast } from 'react-toastify';
 import styles from 'components/ContactForm/ContactForm.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsSelectors, contactsOperations } from '../../redux/contacts';
+import { TextField } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -52,33 +55,36 @@ export default function ContactForm() {
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <label className={styles.formLabel} htmlFor={nameInputId}>
-          Name
-        </label>
-        <input
+        <TextField
           type="text"
+          label="Name"
           name="name"
           id={nameInputId}
           value={name}
-          className={styles.formInput}
           onChange={handleNameChange}
+          className={styles.input}
         />
 
-        <label className={styles.formLabel} htmlFor={nameInputId}>
-          Number
-        </label>
-        <input
+        <TextField
           type="text"
+          label="Number"
           name="number"
           id={numberInputId}
           value={number}
-          className={styles.formInput}
           onChange={handleNumberChange}
+          className={styles.input}
         />
-
-        <button type="submit" className={styles.submitBtn}>
+        
+        <Button
+          type="submit"
+          startIcon={<AddIcon />}
+          variant="contained"
+          color="primary"
+          size="small"
+          className={styles.btn}
+        >
           Add contact
-        </button>
+        </Button>
       </form>
     </>
   );
