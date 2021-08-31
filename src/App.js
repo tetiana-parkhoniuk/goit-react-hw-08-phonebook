@@ -6,6 +6,8 @@ import Container from "components/Container";
 import { authOperations, authSelectors } from "redux/auth";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
 
 
 const HomeView = lazy(() => import('./views/HomeView/HomeView'  /* webpackChunkName: "home-view" */));
@@ -25,6 +27,7 @@ export default function App() {
     !isFetchingCurrentUser && (
       <Container>
         <AppBar />
+        <ToastContainer autoClose={3000}  position='top-right'/>
         
         <Switch>
           <Suspense fallback={<p>Loading...</p>}>

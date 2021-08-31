@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import toast, { Toaster } from 'react-hot-toast';
+import { toast } from 'react-toastify';
 import styles from 'components/ContactForm/ContactForm.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsSelectors, contactsOperations } from '../../redux/contacts';
@@ -38,6 +38,7 @@ export default function ContactForm() {
     }
     else {
       dispatch(contactsOperations.createContact({ name, number }));
+      toast.success('New contact was added.');
     }
     
     resetForm();
@@ -50,7 +51,6 @@ export default function ContactForm() {
 
   return (
     <>
-      <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
       <form className={styles.form} onSubmit={handleSubmit}>
         <label className={styles.formLabel} htmlFor={nameInputId}>
           Name
